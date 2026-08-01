@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>سارة و أحمد | دعوة زفاف</title>
+<meta name="description" content="نتشرف بدعوتكم لمشاركتنا فرحة زفافنا">
+<meta name="theme-color" content="#F3EAD8">
+
+<!-- Open Graph -->
+<meta property="og:title" content="دعوة زفاف سارة و أحمد">
+<meta property="og:description" content="نتشرف بدعوتكم لمشاركتنا فرحة زفافنا">
+<meta property="og:type" content="website">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:ital@0;1&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="icon" href="data:,">
+</head>
+<body>
+
+<!-- ===== شاشة الدخول / الختم ===== -->
+<div class="gate" id="gate">
+  <div class="gate__pattern" aria-hidden="true"></div>
+  <div class="gate__content">
+    <p class="gate__eyebrow">دعوة زفاف</p>
+    <button class="seal" id="sealBtn" type="button" aria-label="اضغطوا لفتح الدعوة">
+      <svg viewBox="0 0 120 120" class="seal__rosette" aria-hidden="true">
+        <use href="#rosette"></use>
+      </svg>
+      <span class="seal__label">اضغطوا لفتح الدعوة</span>
+    </button>
+    <p class="gate__names" id="gateNames">سارة <span class="amp">&amp;</span> أحمد</p>
+  </div>
+</div>
+
+<!-- SVG defs: شعار الشمسة الذهبية (العنصر المميز المتكرر) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="rosette" viewBox="0 0 120 120">
+      <g fill="none" stroke="currentColor" stroke-width="1.5">
+        <circle cx="60" cy="60" r="52"></circle>
+        <circle cx="60" cy="60" r="40"></circle>
+        <g id="rosette-points">
+          <path d="M60 8 L66 40 L60 60 L54 40 Z" fill="currentColor" stroke="none"></path>
+        </g>
+        <use href="#rosette-points" transform="rotate(45 60 60)"></use>
+        <use href="#rosette-points" transform="rotate(90 60 60)"></use>
+        <use href="#rosette-points" transform="rotate(135 60 60)"></use>
+        <use href="#rosette-points" transform="rotate(180 60 60)"></use>
+        <use href="#rosette-points" transform="rotate(225 60 60)"></use>
+        <use href="#rosette-points" transform="rotate(270 60 60)"></use>
+        <use href="#rosette-points" transform="rotate(315 60 60)"></use>
+        <circle cx="60" cy="60" r="14" fill="currentColor" stroke="none"></circle>
+        <circle cx="60" cy="60" r="20"></circle>
+      </g>
+    </symbol>
+    <symbol id="divider-mark" viewBox="0 0 200 40">
+      <g fill="none" stroke="currentColor" stroke-width="1">
+        <line x1="0" y1="20" x2="80" y2="20"></line>
+        <line x1="120" y1="20" x2="200" y2="20"></line>
+        <use href="#rosette" transform="translate(80,0) scale(0.333)"></use>
+      </g>
+    </symbol>
+  </defs>
+</svg>
+
+<!-- ===== المحتوى الرئيسي ===== -->
+<main class="site" id="site" aria-hidden="true">
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__pattern" aria-hidden="true"></div>
+    <div class="hero__inner">
+      <p class="eyebrow reveal">بسم الله الرحمن الرحيم</p>
+      <h1 class="hero__names reveal">
+        <span id="brideName">سارة</span>
+        <span class="amp" aria-hidden="true">
+          <svg viewBox="0 0 120 120" class="amp__rosette"><use href="#rosette"></use></svg>
+        </span>
+        <span id="groomName">أحمد</span>
+      </h1>
+
+      <blockquote class="ayah reveal" id="ayahText">
+        وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً ۚ إِنَّ فِي ذَٰلِكَ لَآيَاتٍ لِّقَوْمٍ يَتَفَكَّرُونَ
+        <cite>الروم: 21</cite>
+      </blockquote>
+
+      <p class="invite-text reveal" id="inviteText">
+        نتشرف بدعوتكم لمشاركتنا فرحة زفافنا، والاحتفال معنا بهذه المناسبة المباركة.
+      </p>
+
+      <p class="hero__date reveal" id="heroDate">23 يوليو 2028</p>
+
+      <a class="btn btn--ghost reveal" id="saveDateBtn" href="#" target="_blank" rel="noopener">
+        حفظ التاريخ
+      </a>
+    </div>
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 200 40" class="divider__svg"><use href="#divider-mark"></use></svg></div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section class="countdown-section">
+    <p class="eyebrow reveal">تبقى على الفرحة</p>
+    <h2 class="section-title reveal">العد التنازلي</h2>
+    <div class="countdown" id="countdown" role="timer" aria-live="polite">
+      <div class="countdown__unit"><span class="countdown__num" id="cdDays">00</span><span class="countdown__label">يوم</span></div>
+      <div class="countdown__sep">:</div>
+      <div class="countdown__unit"><span class="countdown__num" id="cdHours">00</span><span class="countdown__label">ساعة</span></div>
+      <div class="countdown__sep">:</div>
+      <div class="countdown__unit"><span class="countdown__num" id="cdMinutes">00</span><span class="countdown__label">دقيقة</span></div>
+      <div class="countdown__sep">:</div>
+      <div class="countdown__unit"><span class="countdown__num" id="cdSeconds">00</span><span class="countdown__label">ثانية</span></div>
+    </div>
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 200 40" class="divider__svg"><use href="#divider-mark"></use></svg></div>
+  </section>
+
+  <!-- PROGRAM / TIMELINE -->
+  <section class="program" id="program">
+    <p class="eyebrow reveal">برنامج الحفل</p>
+    <h2 class="section-title reveal">تفاصيل الاحتفال</h2>
+    <ol class="timeline" id="timelineList"><!-- يُعبأ عبر JS من config.js --></ol>
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 200 40" class="divider__svg"><use href="#divider-mark"></use></svg></div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="gallery" id="gallery">
+    <p class="eyebrow reveal">معرض الصور</p>
+    <h2 class="section-title reveal">لحظاتنا الجميلة</h2>
+    <div class="gallery__grid" id="galleryGrid"><!-- يُعبأ عبر JS من config.js --></div>
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 200 40" class="divider__svg"><use href="#divider-mark"></use></svg></div>
+  </section>
+
+  <!-- LOCATION -->
+  <section class="location" id="location">
+    <p class="eyebrow reveal">مكان الاستقبال</p>
+    <h2 class="section-title reveal">كيفية الوصول</h2>
+    <p class="location__name reveal" id="venueName">قاعة الاحتفالات، القاهرة</p>
+    <div class="location__map reveal">
+      <iframe id="mapFrame" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen title="خريطة الموقع"></iframe>
+    </div>
+    <a class="btn btn--outline reveal" id="mapLink" target="_blank" rel="noopener">فتح خرائط Google</a>
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 200 40" class="divider__svg"><use href="#divider-mark"></use></svg></div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="rsvp" id="rsvp">
+    <p class="eyebrow reveal">تأكيد الحضور</p>
+    <h2 class="section-title reveal">هل ستشرفونا بحضوركم؟</h2>
+    <p class="rsvp__count reveal"><span id="rsvpCount">0</span> تأكيد حضور حتى الآن</p>
+    <p class="rsvp__deadline reveal" id="rsvpDeadline">يرجى الرد قبل 20 يوليو 2028</p>
+
+    <form class="form reveal" id="rsvpForm" novalidate>
+      <div class="form__row">
+        <label for="rsvpName">الاسم الكامل</label>
+        <input type="text" id="rsvpName" name="name" required autocomplete="name">
+      </div>
+
+      <fieldset class="form__row form__row--radio">
+        <legend>الحضور</legend>
+        <label class="radio">
+          <input type="radio" name="attendance" value="yes" checked>
+          <span>حاضر إن شاء الله</span>
+        </label>
+        <label class="radio">
+          <input type="radio" name="attendance" value="no">
+          <span>غير حاضر</span>
+        </label>
+      </fieldset>
+
+      <div class="form__row">
+        <label for="rsvpGuests">عدد الأشخاص</label>
+        <input type="number" id="rsvpGuests" name="guests" min="1" max="10" value="1">
+      </div>
+
+      <div class="form__row">
+        <label for="rsvpNote">ملاحظة / قيود غذائية</label>
+        <textarea id="rsvpNote" name="note" rows="3"></textarea>
+      </div>
+
+      <button type="submit" class="btn btn--solid">تأكيد</button>
+      <p class="form__status" id="rsvpStatus" role="status" aria-live="polite"></p>
+    </form>
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 200 40" class="divider__svg"><use href="#divider-mark"></use></svg></div>
+  </section>
+
+  <!-- GUESTBOOK -->
+  <section class="guestbook" id="guestbook">
+    <p class="eyebrow reveal">دفتر التهاني</p>
+    <h2 class="section-title reveal">اتركوا تهانيكم للعروسين</h2>
+
+    <form class="form form--inline reveal" id="guestForm" novalidate>
+      <div class="form__row">
+        <label for="guestName">اسمكم / العائلة</label>
+        <input type="text" id="guestName" name="guestName" required>
+      </div>
+      <div class="form__row">
+        <label for="guestMessage">رسالة التهنئة</label>
+        <textarea id="guestMessage" name="guestMessage" rows="3" required></textarea>
+      </div>
+      <button type="submit" class="btn btn--solid">نشر</button>
+      <p class="form__status" id="guestStatus" role="status" aria-live="polite"></p>
+    </form>
+
+    <ul class="guest-list" id="guestList" aria-live="polite"></ul>
+    <div class="divider" aria-hidden="true"><svg viewBox="0 0 200 40" class="divider__svg"><use href="#divider-mark"></use></svg></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <p class="eyebrow reveal">هل لديكم أسئلة؟</p>
+    <h2 class="section-title reveal">تواصلوا معنا</h2>
+    <div class="contact__links reveal">
+      <a id="whatsappLink" class="contact__link" target="_blank" rel="noopener">
+        <span>واتساب</span>
+      </a>
+      <a id="callLink" class="contact__link">
+        <span>اتصال</span>
+      </a>
+      <a id="emailLink" class="contact__link">
+        <span>البريد</span>
+      </a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <svg viewBox="0 0 120 120" class="footer__rosette"><use href="#rosette"></use></svg>
+    <p>صُنعت بحب لأجل <span id="footerNames">سارة و أحمد</span></p>
+  </footer>
+
+</main>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
