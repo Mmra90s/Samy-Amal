@@ -25,7 +25,6 @@
     document.getElementById("inviteText").textContent = cfg.inviteText;
     document.getElementById("heroDate").textContent = cfg.event.dateDisplay;
     document.getElementById("venueName").textContent = cfg.location.name;
-    document.getElementById("rsvpDeadline").textContent = `يرجى الرد قبل ${cfg.rsvp.deadlineDisplay}`;
   }
 
   /* ---------------------------------------------------------
@@ -162,136 +161,14 @@
       `https://www.google.com/maps/search/?api=1&query=${q}`;
   }
 
-  /* ---------------------------------------------------------
-   * 7) روابط التواصل
-   * ------------------------------------------------------- */
-  function setupContact() {
-    document.getElementById("whatsappLink").href = `https://wa.me/${cfg.contact.whatsapp}`;
-    document.getElementById("callLink").href = `tel:${cfg.contact.phone.replace(/\s/g, "")}`;
-    document.getElementById("emailLink").href = `mailto:${cfg.contact.email}`;
-  }
-
-  /* ---------------------------------------------------------
-   * 8) نموذج تأكيد الحضور (RSVP)
-   *    - لو فيه Formspree endpoint في config.js يتم الإرسال فعليًا
-   *    - غير كده، يتم الحفظ محليًا في localStorage (وضع تجريبي)
-   * ------------------------------------------------------- */
-  const STORAGE_KEYS = { rsvp: "buharita_demo_rsvp", guestbook: "buharita_demo_guestbook" };
-
-  function getLocal(key) {
-    try { return JSON.parse(localStorage.getItem(key)) || []; }
-    catch { return []; }
-  }
-  function setLocal(key, arr) {
-    localStorage.setItem(key, JSON.stringify(arr));
-  }
-
-  function updateRsvpCount() {
-    const count = getLocal(STORAGE_KEYS.rsvp).filter((r) => r.attendance === "yes")
-      .reduce((sum, r) => sum + (Number(r.guests) || 1), 0);
-    document.getElementById("rsvpCount").textContent = count;
-  }
-
-  async function submitToFormspree(endpoint, data) {
-    const res = await fetch(endpoint, {
-      method: "POST",
-      headers: { Accept: "application/json", "Content-Type": "application/json" },
-      body: JSON.stringify(data),
-    });
-    if (!res.ok) throw new Error("submit failed");
-  }
-
-  function setupRsvpForm() {
-    const form = document.getElementById("rsvpForm");
-    const status = document.getElementById("rsvpStatus");
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const data = {
-        name: form.name.value.trim(),
-        attendance: form.attendance.value,
-        guests: form.guests.value,
-        note: form.note.value.trim(),
-        submittedAt: new Date().toISOString(),
-      };
-      if (!data.name) return;
-
-      status.textContent = "جاري الإرسال...";
-      try {
-        if (cfg.rsvp.formspreeEndpoint) {
-          await submitToFormspree(cfg.rsvp.formspreeEndpoint, data);
-        } else {
-          const list = getLocal(STORAGE_KEYS.rsvp);
-          list.push(data);
-          setLocal(STORAGE_KEYS.rsvp, list);
-        }
-        status.textContent = "تم تسجيل ردكم، شكرًا لكم! 🤍";
-        form.reset();
-        updateRsvpCount();
-      } catch {
-        status.textContent = "حدث خطأ، حاولوا مرة أخرى أو تواصلوا معنا مباشرة.";
-      }
-    });
-  }
-
-  /* ---------------------------------------------------------
-   * 9) دفتر التهاني
-   * ------------------------------------------------------- */
-  function renderGuestbook() {
-    const list = document.getElementById("guestList");
-    const entries = getLocal(STORAGE_KEYS.guestbook).slice().reverse();
-    list.innerHTML = entries
-      .map(
-        (g) => `
-      <li class="guest-list__item">
-        <svg viewBox="0 0 120 120" class="guest-list__mark"><use href="#rosette"></use></svg>
-        <div>
-          <p class="guest-list__msg">${escapeHtml(g.message)}</p>
-          <p class="guest-list__name">— ${escapeHtml(g.name)}</p>
-        </div>
-      </li>`
-      )
-      .join("");
-  }
-
   function escapeHtml(str) {
     const div = document.createElement("div");
     div.textContent = str;
     return div.innerHTML;
   }
 
-  function setupGuestbookForm() {
-    const form = document.getElementById("guestForm");
-    const status = document.getElementById("guestStatus");
-
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const data = {
-        name: form.guestName.value.trim(),
-        message: form.guestMessage.value.trim(),
-        submittedAt: new Date().toISOString(),
-      };
-      if (!data.name || !data.message) return;
-
-      status.textContent = "جاري النشر...";
-      try {
-        if (cfg.guestbook.formspreeEndpoint) {
-          await submitToFormspree(cfg.guestbook.formspreeEndpoint, data);
-        }
-        const list = getLocal(STORAGE_KEYS.guestbook);
-        list.push(data);
-        setLocal(STORAGE_KEYS.guestbook, list);
-        status.textContent = "تم نشر تهنئتكم، شكرًا لكم! 🤍";
-        form.reset();
-        renderGuestbook();
-      } catch {
-        status.textContent = "حدث خطأ، حاولوا مرة أخرى.";
-      }
-    });
-  }
-
   /* ---------------------------------------------------------
-   * 10) شاشة الدخول (الختم) — أنيميشن فتح الدعوة
+   * 7) شاشة الدخول (الختم) — أنيميشن فتح الدعوة
    * ------------------------------------------------------- */
   function setupGate() {
     const gate = document.getElementById("gate");
@@ -349,11 +226,6 @@
     renderTimeline();
     renderGallery();
     setupMap();
-    setupContact();
-    setupRsvpForm();
-    setupGuestbookForm();
-    renderGuestbook();
-    updateRsvpCount();
     setupGate();
     revealOnScroll();
   });
